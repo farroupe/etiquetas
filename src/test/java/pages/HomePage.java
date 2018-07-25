@@ -54,10 +54,11 @@ public class HomePage extends AbstractPageObject {
 				 SeleccionarSucursal.selectByValue("029");
 				 ClickearBotonLogin.click(); 
 
+				 /*
 				 System.out.println("*********************************");
 				 System.out.println("Ingrese correctamente a Etiquetas");
 				 System.out.println("*********************************");
-
+				*/
 				 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			 break;
 		 

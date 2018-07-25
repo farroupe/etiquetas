@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -43,7 +44,7 @@ public class Templates extends AbstractPageObject {
 	public void ingresarATemplate() {
 		WebElement template = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[4]/a"));
 		template.click();
-		System.out.println("Ingres� a Templates");	
+	//	System.out.println("Ingresé a Templates");	--Es indiferente.
 	}
 
 	
@@ -81,6 +82,31 @@ public class Templates extends AbstractPageObject {
 		driver.findElement(By.id("btnSave")).click();
 		
 	}
+	
+public void CrearNuevoTemplSinHTML() {
+		
+		String marcoCreado = "default-horizontal-chico (60.50x45.00)";
+		
+		WebElement nuevoTempl = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[4]/ul/li[1]/a"));
+		nuevoTempl.click();
+
+		String templCreado = (nTempl + r);
+		driver.findElement(By.id("name")).sendKeys(templCreado);
+		new Select(driver.findElement(By.id("cmbLayout"))).selectByVisibleText(marcoCreado);
+		driver.findElement(By.id("filterProduct")).sendKeys(prod);
+		driver.findElement(By.id("btnSearchProducts")).click();
+			
+		driver.findElement(By.id("btnSave")).click();
+		
+		// Esto puede ser reutilizable.
+		
+			WebElement messageErr = driver.findElement(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"));
+			wait.until(ExpectedConditions.visibilityOf(messageErr));
+			//String errDesc = messageErr.getText();
+			Assert.assertEquals("Debe ingresar el cuerpo del template", messageErr.getText());
+			System.out.println("---VALIDACIÓN CORRECTA---");			
+	}
+	
 	
 	
 
@@ -143,5 +169,70 @@ public class Templates extends AbstractPageObject {
 		WebElement registro = driver.findElement(By.name(reg));
 		new Select(registro).selectByValue("100");
 	}
+	
+	
+	public void BuquedaPorProd() throws InterruptedException {
 
+		String marcoCreado = "default-horizontal-chico (60.50x45.00)";
+		
+		WebElement nuevoTempl = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[4]/ul/li[1]/a"));
+		nuevoTempl.click();
+
+		String templCreado = (nTempl + r);
+		driver.findElement(By.id("name")).sendKeys(templCreado);
+		new Select(driver.findElement(By.id("cmbLayout"))).selectByVisibleText(marcoCreado);
+		
+		BuscarNombreProducto(prod);	
+		NavegarPaginaProductos();
+		
+	}
+	
+	public void NavegarPaginaProductos() throws InterruptedException {
+		
+		TimeUnit.SECONDS.sleep(2);
+		
+		driver.findElement(By.xpath("//*[@id=\"productsModal_paginate\"]/ul/li[3]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"productsModal_paginate\"]/ul/li[4]/a")).click();
+	}
+	
+	
+	public void BuscarNombreProducto(String prod) {
+		driver.findElement(By.id("filterProduct")).sendKeys("100106");
+		driver.findElement(By.id("btnSearchProducts")).click();
+	}
+	
+	public void ValidarProd() {
+		
+	}
+	
+	public void RecorrerCaractProd() {
+		
+		WebElement tdbody = driver.findElement(By.xpath("//*[@id=\"attr\"]/tbody"));
+		List<WebElement> trs = tdbody.findElements(By.xpath("tr"));
+		
+		for (WebElement td : trs) {
+
+		//	i++;
+
+			System.out.println("========================");
+			System.out.println("    La TR de la Tabla   ");
+			System.out.println("========================");
+
+			List<WebElement> tds = td.findElements(By.tagName("td"));
+
+			for (WebElement g : tds) {
+
+				String nomElem = g.getText();
+				
+				if (nomElem.equalsIgnoreCase(prod)){
+					System.out.println("PRODUCTO Encontrado");
+				//	Assert.assertTrue(msg);
+				}
+				
+				
+			}
+		
+		}
+	}
+	
 }

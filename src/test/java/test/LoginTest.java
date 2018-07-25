@@ -309,6 +309,31 @@ public class LoginTest extends BaseTest {
 		templ.borrarTemplate(nombreT);
 	}
 	
+	
+	//--------------------------------------------- CASOS NEGATIVOS TEMPLATES ---------------------------------------------------------------------------------------
+	/*
+	public void tCrearTemplVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+		Templates templ = new Templates(driver, driverWait);
+		templ.ingresarATemplate();
+		marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+		}
+	*/
+	
+	
+	// Crear html vacío
+	
+	public void LTCrearTemplSinHTML() {
+		Templates templ = new Templates (driver, driverWait);
+		templ.ingresarATemplate();
+		templ.CrearNuevoTemplSinHTML();
+	}
+	
+	public void LTBusquedaPorProd() throws InterruptedException {
+		Templates templ = new Templates (driver, driverWait);
+		templ.ingresarATemplate();
+		templ.BuquedaPorProd();
+	}
+	
 //================================================================= REGLAS ================================================================	
 	
 	public String crearRegla(String templCreado) throws IOException, InterruptedException {

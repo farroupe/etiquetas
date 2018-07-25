@@ -29,7 +29,7 @@ String nombreT = "Default pcs";
 //================================================================= HOJAS ================================================================		
 	
 	// CREAR HOJAS
-	@Test
+    
 	public void CreaHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		System.out.println("==================================================================");
@@ -68,7 +68,7 @@ String nombreT = "Default pcs";
 	
 		//INTENTAR CREAR HOJA - NOMBRE INGRESANDO NUMEROS 07
 		
-		@Test
+		
 		public void cNombrConNumeros() {
 			LoginTest etiquetas = new LoginTest();
 			etiquetas.LTIngresarEtiq(perfil);
@@ -211,7 +211,7 @@ String nombreT = "Default pcs";
 	    }
 	    
 	    //INTENTAR CREAR HOJA - MARGENES SUPERAN HOJA 23
-	    @Test
+	
 	    public void cCrearHojaMargenesSuperanHoja() {
 	    	LoginTest etiquetas = new LoginTest();
 			etiquetas.LTIngresarEtiq(perfil);
@@ -300,7 +300,7 @@ String nombreT = "Default pcs";
 		}
 		
 		// CREA MARCO - NOMBRE SUPERA LIMITE
-		@Test
+	    @Test
 		public void cCreaMarcoNombreSuperaLimite() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.LTIngresarEtiq(perfil);
@@ -372,7 +372,33 @@ String nombreT = "Default pcs";
 		etiquetas.LTIngresarEtiq(perfil);
 		etiquetas.eliminarTempl(nombreT);
 	}
+	
+	
+	// 
+	
+	
+	// ----------------------------------------------- CASOS NEGATIVOS TEMPLATES -------------------------------------------------------------------
 
+	
+	
+	public void cCrearTemplSinHTML() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.LTIngresarEtiq(perfil);
+		etiquetas.LTCrearTemplSinHTML();
+	}
+	
+	
+	public void cBusquedaPorProd() throws InterruptedException {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.LTIngresarEtiq(perfil);
+		etiquetas.LTBusquedaPorProd();
+	}
+	
+	
+
+	
+	
+	
 //================================================================= REGLAS ================================================================		
 
 	// CREAR REGLA

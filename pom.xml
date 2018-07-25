@@ -89,8 +89,9 @@
              <buildDirectory>${project.build.directory}</buildDirectory>
 				<includes>
 					<include>AppTest.java</include>
-					<include>CasosNegativos.java</include>
+					<include>CasosNegativosHojas.java</include>
 					<include>TestFuncionales.java</include>
+					<include>CasosNegativosTemplates.java</include>
 				</includes>
            </systemPropertyVariables>
          </configuration>
